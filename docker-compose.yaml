@@ -3,12 +3,12 @@ version: '3'
 services:
 
     wordpress:
-        container_name: wp4
+        container_name: wp
         image: arm32v7/wordpress
         volumes:
             -  ./wp_data:/var/www/html
         ports:
-            - '84:80'
+            - '80:80'
         environment:
           - WORDPRESS_DB_HOST=mysql
           - WORDPRESS_DB_USER=user
@@ -16,7 +16,7 @@ services:
           - WORDPRESS_DB_NAME=wp 
 
     mysql:
-        container_name: maria4
+        container_name: maria
         image: yobasystems/alpine-mariadb
         volumes:
             - ./bd_data:/var/lib/mysql'
@@ -29,12 +29,12 @@ services:
           - "3306" 
 
     adminer:
-        container_name: adm4
+        container_name: adm
         image: arm32v7/adminer    
         depends_on:      
           - mysql
         ports:      
-          - "8084:8080"        
+          - "8080:8080"        
         environment:
           - MYSQL_ROOT_PASSWORD=password
           - ADMINER_USERNAME=user
